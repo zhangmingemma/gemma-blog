@@ -5,36 +5,41 @@ import Intro from './pages/intro/intro';
 import { useEffect, useState } from 'react';
 import Feature from './pages/feature/feature';
 import Model from './pages/model/model';
+import { HEADER_THEME } from './config/const';
 
 function App() {
-    const [showFeature, setShowFeature] = useState<boolean>(false)
+    const [showFeature, setShowFeature] = useState<boolean>(false);
+    const [headerTheme, setHeaderTheme] = useState<HEADER_THEME>(HEADER_THEME.BLACK)
 
-    const onscroll = (e:any) => {
-        console.error(',e', e)
-        const ele = document.getElementById('js__feature')
-        console.error(ele?.scrollTop)
-        console.error(document.body.scrollTop)
-        console.error(document.documentElement.scrollTop)
-        console.error(window.scrollY, window.pageYOffset)
-        console.error('scroll')
-        setShowFeature(true)
-    }
+    const onscroll = (e: any) => {
+        const root:HTMLElement|null = document.getElementById('root');
+        const feature:HTMLElement|null = document.getElementById('js__feature');
+        console.error('scrooll', root?.scrollTop)
+        console.error('feature offset', feature?.getBoundingClientRect().top)
+        if (root && root.scrollTop >= 50) {
+            setShowFeature(true);
+        }  
+        if (feature) {
+            const theme = feature.getBoundingClientRect()?.top <= 0 ? HEADER_THEME.WHITE : HEADER_THEME.BLACK
+            setHeaderTheme(theme)
+        }
+    };
 
     useEffect(() => {
-        document.addEventListener('scroll', onscroll, true)
+        document.addEventListener('scroll', onscroll, true);
         return () => {
-            document.removeEventListener('scroll', onscroll)
-        }
-    }, [])
+            document.removeEventListener('scroll', onscroll);
+        };
+    }, []);
 
     return (
         <GlobalProvider>
             <div className={style.app} id="app">
-                <Header />
+                <Header theme={headerTheme}/>
                 <div className={style.content}>
-                    <Intro/>
-                    <Feature show={showFeature}/>
-                    <Model/>
+                    <Intro />
+                    <Feature show={showFeature} />
+                    <Model />
                 </div>
             </div>
         </GlobalProvider>

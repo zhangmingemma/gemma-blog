@@ -14,9 +14,9 @@ const Lang = () => {
     return (
         <div className={style.lang}>
             {Object.keys(locale).map((key) => (
-                <div 
-                    className={classNames(style.langItem, lang===key && style.active)} 
-                    onClick={(e) => setLocale(key)} 
+                <div
+                    className={classNames(style.langItem, lang === key && style.active)}
+                    onClick={(e) => setLocale(key)}
                     key={key}
                 >
                     {localeTitleMap[key]}
