@@ -1,0 +1,27 @@
+.lang {
+    display: flex;
+    align-items: center;
+    &-item {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 28px;
+        color: rgba(255,255,255,0.4);
+        cursor: pointer;
+        &.active {
+            text-decoration: underline;
+            color: #ffffff;
+        }
+        &:first-of-type {
+            position: relative;
+            margin-right: 20px;
+            &:after {
+                position: absolute;
+                content: '/';
+                right: -14px;
+                top: 0;
+                font-size: 12px;
+                color: #ffffff;
+            }
+        }
+    }
+}

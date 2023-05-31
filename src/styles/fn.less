@@ -1,0 +1,18 @@
+.section-title() {
+    margin-left: 14px;
+    background: linear-gradient(90deg, #EAEEEF 0%, rgba(234, 238, 239, 0) 100%);
+    width: 350px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    &:before {
+        position: absolute;
+        content: '';
+        left: -14px;
+        top: 0;
+        width: 11px;
+        height: 58px;
+        background: #EAEEEF;
+    }
+}

@@ -1,0 +1,99 @@
+@import '@/styles/fn.less';
+@animationDuration: 2s;
+
+.feature {
+    background: #F8F9F9;
+    padding-left: 164px;
+    &-box {
+        position: relative;
+        z-index: 1;
+        margin-top: -50px;
+        width: 100%;
+        background: linear-gradient(180deg, #FFFFFF 0%, #F8F9F9 100%);
+        padding-top: 50px;
+        opacity: 0;
+        transform: translateX(100px);
+        &.animation {
+            animation: feature-box-show @animationDuration linear;
+            animation-fill-mode: forwards;
+            -webkit-animation-fill-mode: forwards;
+            -o-animation-fill-mode: forwards;
+        }
+        &-title {
+            .section-title();
+            padding-left: 66px;
+            font-weight: 300;
+            font-size: 40px;
+            color: #0D0B10;
+        }
+        &-list {
+            margin-top: 20px;
+            padding: 0 120px 0 40px;
+            .item {
+                position: relative;
+                padding: 45px 0 32px;
+                display: flex;
+                align-items: flex-start;
+                &:not(:last-of-type) {
+                    border-bottom: 1px solid rgba(1,7,24,0.1);
+                }
+                &-index {
+                    color: #EAEEEF;
+                    font-weight: 300;
+                    font-size: 56px;
+                    line-height: 1;
+                    flex-shrink: 0;
+                }
+                &-info {
+                    margin-left: 140px;
+                    flex: 1;
+                    &-title {
+                        height: 32px;
+                        font-weight: 400;
+                        font-size: 24px;
+                        line-height: 32px;
+                        color: #0D0B10;
+                    }
+                    &-desc {
+                        margin-top: 12px;
+                        font-weight: 400;
+                        font-size: 16px;
+                        line-height: 32px;
+                        color: #6A6A6A;
+                    }
+                }
+                &-icon {
+                    width: 60px;
+                    height: 60px;
+                    flex-shrink: 0;
+                }
+            }
+        }
+    }
+}
+
+@keyframes feature-box-show {
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 100%;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .feature {
+        padding-left: 324px;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    .feature {
+        padding-left: 421px;
+        .feature-box-list {
+            padding: 0 195px 0 40px;
+        }
+    }
+}

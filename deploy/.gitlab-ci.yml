@@ -1,0 +1,15 @@
+variables:
+    SERVICE_NAME: nlp-web
+    PROJECT: cloud
+    IMAGE_PULL_SECRET: regcred-vpc
+    DOCKERFILE: ./deploy/Dockerfile
+    DEPLOY_DIR: ./deploy
+    DEV_SGPU_VALUE_FILE: values/dev.yml
+
+    PROD_NAMESPACE: cloud-prod # cloud-prod/cloud
+
+    RUNNER_TAG: s # 或者aliyun
+
+include:
+    - project: devops/ci-templates
+      file: /templates/s-biz-cloud-values.yml
